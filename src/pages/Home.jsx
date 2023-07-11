@@ -23,6 +23,7 @@ function Home() {
             <th scope="col">Name</th>
             <th scope="col">UserName</th>
             <th scope="col">Email</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,11 @@ function Home() {
               <td>{user.name}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>
+              <td>
+                <button className="btn btn-outline-secondary mx-2">보기</button>
+                <button className="btn btn-outline-warning mx-2">수정</button>
+                <button className="btn btn-outline-danger mx-2">삭제</button>
+              </td>
             </tr>
           ))}
         </tbody>
