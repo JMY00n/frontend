@@ -89,7 +89,7 @@ function AddUser() {
                 Submit
               </button>
               <Link to="/" className="btn btn-outline-danger px-3 mx-2">
-                Reset
+                Back
               </Link>
             </div>
           </form>

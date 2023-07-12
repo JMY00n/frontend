@@ -45,6 +45,12 @@ const EditUser = () => {
     // 바로 홈페이지로 이동(리스트에 새유저가 보임)
     navigate("/");
   };
+
+  const deleteUser = async (id) => {
+    await axios.delete(`http://localhost:8080/user/${id}`, user);
+    loadUser();
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -103,9 +109,9 @@ const EditUser = () => {
               >
                 Edit
               </button>
-              <Link to="/" className="btn btn-outline-danger px-3 mx-2">
-                Back
-              </Link>
+              <button className="btn btn-outline-danger px-3 mx-2">
+                Delete
+              </button>
             </div>
           </form>
         </div>
