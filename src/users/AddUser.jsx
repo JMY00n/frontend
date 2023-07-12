@@ -41,6 +41,7 @@ function AddUser() {
                 Name
               </label>
               <input
+                required
                 type="text"
                 id="name"
                 value={name}
@@ -55,6 +56,7 @@ function AddUser() {
                 UserName
               </label>
               <input
+                required
                 type="text"
                 id="username"
                 value={username}
@@ -69,6 +71,7 @@ function AddUser() {
                 Email
               </label>
               <input
+                required
                 type="text"
                 id="email"
                 value={email}
