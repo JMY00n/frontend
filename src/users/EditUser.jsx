@@ -1,14 +1,29 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const EditUser = () => {
   let navigate = useNavigate(); // 네비게이트 객체 생성
+
+  // 요청 주소의 id값을 받음
+  const { id } = useParams();
+
   const [user, setUser] = useState({
     name: "",
     username: "",
     email: "",
   });
+
+  // 앱 실행시 한 번 실행
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
+
+  const loadUser = async () => {
+    const result = await axios.get(`http://localhost:8080/users/${id}`);
+    setUser(result.data);
+  };
 
   const onInputChange = (e) => {
     setUser({
@@ -25,7 +40,7 @@ const EditUser = () => {
     e.preventDefault(); // 기본 전송 기능 중지
 
     // 백엔드 서버로 user 데이터 전송
-    await axios.post("http://localhost:8080/user", user);
+    await axios.put(`http://localhost:8080/user/${id}`, user);
 
     // 바로 홈페이지로 이동(리스트에 새유저가 보임)
     navigate("/");
@@ -89,7 +104,7 @@ const EditUser = () => {
                 Edit
               </button>
               <Link to="/" className="btn btn-outline-danger px-3 mx-2">
-                Reset
+                Back
               </Link>
             </div>
           </form>
